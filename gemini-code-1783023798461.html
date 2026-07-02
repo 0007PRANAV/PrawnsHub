@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prawnshub | Game Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0c10;
+            --card-bg: rgba(22, 28, 38, 0.6);
+            --accent-primary: #6366f1;
+            --accent-secondary: #3b82f6;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-glow: rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+        }
+
+        /* Header / Navbar */
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(238, 42, 123, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 800px;
+            margin: 4rem auto 6rem auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 30%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Section Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 8rem 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        /* Project Card Layout */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--border-glow);
+        }
+
+        .project-header {
+            margin-bottom: 2rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--accent-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Links & Buttons Grouping */
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* Base Button styling */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* APK download visual separation divider */
+        .apk-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 0.5rem 0;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .apk-divider::before, .apk-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .apk-divider:not(:empty)::before { margin-right: 1rem; }
+        .apk-divider:not(:empty)::after { margin-left: 1rem; }
+
+        .btn-apk {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .btn-apk:hover {
+            background: rgba(16, 185, 129, 0.18);
+            border-color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">PRAWNSHUB</div>
+        <a href="https://www.instagram.com/prawnshub_?igsh=MWRkbThiamg4eGk0bg==" target="_blank" class="social-link">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+    </header>
+
+    <section class="hero">
+        <h1>My Creative Arcade</h1>
+        <p>Explore games developed and deployed across different environments. Tap through to play instantly on Vercel, visit on itch.io, or download natively.</p>
+    </section>
+
+    <main class="container">
+
+        <article class="project-card">
+            <div class="project-header">
+                <span class="project-tag">Action / Shooter</span>
+                <h2 class="project-title">Warzone-Infinite</h2>
+                <p class="project-desc">An intense, continuous tactical experience. Battle endless waves of opposition and claim your high score in this web-optimized action buildup.</p>
+            </div>
+            
+            <div class="link-group">
+                <a href="https://warzone-infinite.vercel.app/" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Play Live on Vercel
+                </a>
+                
+                <a href="https://clementinerdr2.itch.io/warzone-infinite-httpswarzone-infinitevercelapp" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-itch-io"></i> View on itch.io
+                </a>
+
+                <div class="apk-divider">Android Version</div>
+
+                <a href="app-apk-057087a999434e5a8f32e45c71080fd2-1782812649.apk" download class="btn btn-apk">
+                    <i class="fab fa-android"></i> Download APK (App 05)
+                </a>
+            </div>
+        </article>
+
+        <article class="project-card">
+            <div class="project-header">
+                <span class="project-tag">Arcade / Classic</span>
+                <h2 class="project-title">Nexus-SnakeGame</h2>
+                <p class="project-desc">A reimagined cybernetic take on the grandfather of mobile games. Dodge obstacles, grow your length, and navigate through seamless fast-paced gameplay loops.</p>
+            </div>
+            
+            <div class="link-group">
+                <a href="https://snake-game-two-navy.vercel.app/" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Play Live on Vercel
+                </a>
+                
+                <a href="https://clementinerdr2.itch.io/snake-gamehttpssnake-game-two-navyvercelapp" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-itch-io"></i> View on itch.io
+                </a>
+            </div>
+        </article>
+
+    </main>
+
+</body>
+</html>
